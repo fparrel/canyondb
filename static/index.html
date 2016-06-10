@@ -1,0 +1,28 @@
+<html><head>    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head><body>
+Corde:<input type="text" id="corde"><br/>
+Temps:<input type="text" id="tpstotal"><br/>
+<input type="button" value="go" onclick="dosearch();">
+<div id="res"></div>
+<script>
+function convsec(s) {
+	var h=parseInt(s/3600);
+	var m=parseInt((s%3600)/60);
+	if((h>0)&&(m>0))
+		return h+"h"+m;
+	else if(h>0)
+		return h+"h";
+	else return m+"min";
+}
+function conv2html(c) {
+	return c.title+" "+c.interet+" "+c.cot+" corde:"+c.corde+"m aller:"+convsec(c.aller)+" retour:"+convsec(c.ret)+" descente:"+convsec(c.descente)+" voiture:"+convsec(c.localisation.distance)+" total:"+convsec(c.tpstotal);
+}
+function dosearch() {
+	var url = "http://localhost:30000/search/"+document.getElementById("corde").value+"/"+document.getElementById("tpstotal").value;
+	console.log("url="+url);
+	$.getJSON(url,function (data) { 
+		$("#res").html(data.map(conv2html).join("<br/>"))
+	//var i; for(i=0;i<data.length;i++) $("#res")= conv2html(data[i]))
+	});
+}
+</script>

@@ -1,3 +1,9 @@
+# App specific
+config.py
+canyons*.json
+canyons.log
+*.pyc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
