@@ -5,13 +5,12 @@ When you have only X hours and a cord of length Y and you want to go out for a c
 
 ## How to use me
 
-1. Screen-scrap the database from //descente-canyon.com//
-`scrapy runspider canyon-scrap.py -o canyons.json --logfile=canyons.log`
-
 ### MongoDB version
 
 *Prerequisites:* python + pymongo + flask + MongoDB server + MongoDB mongoimport client utility
 
+1. Screen-scrap the database from //descente-canyon.com//
+`scrapy runspider canyon-scrap.py -o canyons.json --logfile=canyons.log`
 2. Insert this database into MongoDB
 `remove '[' and ']' from canyons.json
 mongoimport --db canyons --collection canyons --file canyons.json`
@@ -27,6 +26,8 @@ mongoimport --db canyons --collection canyons --file canyons.json`
 
 *Prerequisites:* python + flask
 
+1. Screen-scrap the database from //descente-canyon.com//
+`scrapy runspider canyon-scrap.py -o canyons.json --logfile=canyons.log`
 2. Get driving times from google maps server
 `driving_compute-text.py`
 3. Do a little bit of denormalization and formatting on the database
